@@ -38,3 +38,71 @@ ssh -l 관리자이름 -p 외부포트 아이피
 ```
 
 이후 password를 물어보면 사전에 저장해두었던 password를 입력하면 접속이 완료된다.
+
+## 환경 설정
+
+### K3s 설치
+
+```
+mkdir kubeflow
+cd kubeflow
+```
+
+### Docker 설치
+
+```
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+
+apt update 및 https 허용 설정
+
+```
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```
+
+GPG 설정
+
+### Docker Engine 설치
+
+```
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+### K3s 설치
+
+```
+curl -sfL https://get.k3s.io | sh -s - --docker
+```
+
+K3s 설치하기
+
+```
+sudo cat /etc/rancher/k3s/k3s.yaml
+```
+
+K3s 설치여부 확인하기
+
+### helm 설치
+
+```
+wget https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
+tar -zxvf helm-v3.7.1-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin/helm
+helm help
+```
+
+### Kustomize 설치
+
+```
+wget https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.10.0/kustomize_v3.10.0_linux_amd64.tar.gz
+tar -zxvf kustomize_v3.10.0_linux_amd64.tar.gz
+sudo mv kustomize /usr/local/bin/kustomize
+kustomize help
+```
