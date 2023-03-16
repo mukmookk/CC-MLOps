@@ -18,9 +18,9 @@
 | **Storage**            | >= 10GB    |
 | **Default Storage Class**| with dynamic provisioning|
 
-특히 default storage class를 생성하는 부분이 상당히 당황스러웠는데, minikube에서는 기본적으로 addon 형태로 달려있는 것을 확인할 있지만, kubeadm을 통해 만들어진 kubernetes 클러스터는 그렇지 않다. 직접 설정해줘야 한다.
+특히 default storage class를 생성하는 부분이 상당히 당황스러웠는데, minikube에서는 기본적으로 addon 형태로 달려있는 것을 확인할 수 있지만, kubeadm을 통해 만들어진 kubernetes 클러스터는 그렇지 않다. 직접 설정해줘야 한다.
 
-이때 사용할 수 있는 대표적인 솔루션이 Rook과 Cephfs이다. 
+이때 사용할 수 있는 대표적인 솔루션이 `Rook`과 `Cephfs`이다. 
 > CephFS는 Standalone으로 사용할 수 있는 분산 파일 시스템이며, Rock은 Ceph(Cephfs 포함)를 배포하고 관리할 수 있는 쿠버네티스용 스토리지 오케스트레이터입니다. 
 
 >  CephFS is a distributed file system that provides scalable and reliable storage for files. It is a component of the larger Ceph storage system and can be used as a standalone file system or as part of a Ceph cluster. CephFS is designed to provide POSIX-compliant file system semantics and is highly available and fault-tolerant.
