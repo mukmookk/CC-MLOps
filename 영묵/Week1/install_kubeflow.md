@@ -3,7 +3,7 @@
 - [Kubeflow를 활용한 MLOps 개발환경 설정](#kubeflow를-활용한-mlops-개발환경-설정)
     - [Prerequisites](#prerequisites)
   - [Step 1 Install LVM](#step-1-install-lvm)
-  - [Step 2 - Install Rock](#step-2---install-rock)
+  - [Step 2 - Install Rook](#step-2---install-rook)
   - [Step 3 - Provision Storage Class and make it default](#step-3---provision-storage-class-and-make-it-default)
   - [Step 4 - Install kustomize](#step-4---install-kustomize)
   - [Step 5 - Install Kubeflow](#step-5---install-kubeflow)
@@ -21,7 +21,7 @@
 특히 default storage class를 생성하는 부분이 상당히 당황스러웠는데, minikube에서는 기본적으로 addon 형태로 달려있는 것을 확인할 있지만, kubeadm을 통해 만들어진 kubernetes 클러스터는 그렇지 않다. 직접 설정해줘야 한다.
 
 이때 사용할 수 있는 대표적인 솔루션이 Rook과 Cephfs이다. 
-> CephFS는 Standalone으로 사용할 수 있는 분산 파일 시스템이며, Rock은 Ceph(Cephfs 포함)를 배포하고 관리할 수 있는 쿠버네티스용 스토리지 오케스트레이터입니다. 
+> CephFS는 Standalone으로 사용할 수 있는 분산 파일 시스템이며, Rook은 Ceph(Cephfs 포함)를 배포하고 관리할 수 있는 쿠버네티스용 스토리지 오케스트레이터입니다. 
 
 >  CephFS is a distributed file system that provides scalable and reliable storage for files. It is a component of the larger Ceph storage system and can be used as a standalone file system or as part of a Ceph cluster. CephFS is designed to provide POSIX-compliant file system semantics and is highly available and fault-tolerant.
 
@@ -46,7 +46,7 @@ lsblk -f
 sudo apt-get install -y lvm2
 ```
 
-## Step 2 - Install Rock
+## Step 2 - Install Rook
 
 현재 가장 최신 버전인 1.11.1 버전을 설치
 
@@ -67,16 +67,16 @@ kubectl create -f cluster.yaml
 
 성공이 되었는지 확인해주자.
 ```
-kubectl get pod -n rock-ceph
+kubectl get pod -n Rook-ceph
 ```
 
 ## Step 3 - Provision Storage Class and make it default
 
 ceph를 도입한 당초 목적이였던 Storage Class를 프로비저닝하고 이를 쿠버네티스의 default 스토리지로 설정하는 단계이다.
 
-마찬가지로 앞서 Clone 해왔던 Rock의 저장소에서 다음의 주소에 있는 yaml 파일을 적용시켜 준다.
+마찬가지로 앞서 Clone 해왔던 Rook의 저장소에서 다음의 주소에 있는 yaml 파일을 적용시켜 준다.
 
-*(rock/deploy/examples/csi/rbd)*
+*(Rook/deploy/examples/csi/rbd)*
 
 ```
 kubectl apply -f storageclass-test.yaml
