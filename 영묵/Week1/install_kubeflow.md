@@ -99,7 +99,7 @@ wget https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F
 
 압축 풀어주고 
 ```
-tar -xvfz kustomize_v5.0.1_linux_amd64.tar.gz
+tar -xvf kustomize_v5.0.1_linux_amd64.tar.gz
 ```
 
 PATH 경로로 옮겨주면 구성 완료
