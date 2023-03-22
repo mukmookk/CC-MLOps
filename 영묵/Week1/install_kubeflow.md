@@ -67,7 +67,7 @@ kubectl create -f cluster.yaml
 
 성공이 되었는지 확인해주자.
 ```
-kubectl get pod -n Rook-ceph
+kubectl get CephCluster -n rook-ceph
 ```
 
 ## Step 3 - Provision Storage Class and make it default
