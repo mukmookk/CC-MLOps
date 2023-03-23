@@ -67,7 +67,7 @@ kubectl create -f cluster.yaml
 
 성공이 되었는지 확인해주자.
 ```
-kubectl get pod -n Rook-ceph
+kubectl get CephCluster -n rook-ceph
 ```
 
 ## Step 3 - Provision Storage Class and make it default
@@ -99,7 +99,7 @@ wget https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F
 
 압축 풀어주고 
 ```
-tar -xvfz kustomize_v5.0.1_linux_amd64.tar.gz
+tar -xvf kustomize_v5.0.1_linux_amd64.tar.gz
 ```
 
 PATH 경로로 옮겨주면 구성 완료
